@@ -11,6 +11,7 @@ const darkMode = ref(false);
 const leftDrawerOpen = ref(false);
 const localStore = useLocalStore();
 const { isDarkActive } = storeToRefs(localStore);
+const { toggleDarkMode } = localStore;
 
 // Methods
 onMounted(() => {
@@ -21,6 +22,7 @@ watch(
   () => darkMode.value,
   (val) => {
     dark.set(val);
+    toggleDarkMode(val);
   }
 );
 

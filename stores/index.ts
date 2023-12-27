@@ -13,11 +13,15 @@ export const useLocalStore = defineStore(
     };
 
     const isDarkActive = ref(false);
+    const toggleDarkMode = (val: boolean) => {
+      isDarkActive.value = val;
+    };
     return {
       count,
       isDarkActive,
       increment,
       decrement,
+      toggleDarkMode,
     };
   },
   {
