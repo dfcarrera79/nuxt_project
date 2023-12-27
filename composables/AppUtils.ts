@@ -1,12 +1,12 @@
-import { ObjectError } from '../components/models';
+import type { ObjectError } from "../components/models";
 
 export function deducirMensajeError(o_error: ObjectError) {
-  let mensaje = '';
+  let mensaje = "";
   let hubo = false;
   if (o_error.message) {
     mensaje =
-      o_error.message === 'Network Error'
-        ? 'La aplicación no logra conectarse con el servidor, revise si su dispositivo esta con internet o si el servidor esta disponible.'
+      o_error.message === "Network Error"
+        ? "La aplicación no logra conectarse con el servidor, revise si su dispositivo esta con internet o si el servidor esta disponible."
         : o_error.message;
     hubo = true;
   }
@@ -16,7 +16,7 @@ export function deducirMensajeError(o_error: ObjectError) {
         mensaje +
         "<br><span style='color:red'>" +
         o_error.config.url +
-        '</span>';
+        "</span>";
       hubo = true;
     }
   }

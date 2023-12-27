@@ -1,27 +1,28 @@
 // Example using Composition API
 import { defineStore } from "pinia";
+import { ref, computed } from "vue";
 
 export const useLocalStore = defineStore(
   "store",
   () => {
     // state
     const isDarkActive = ref(false);
-    const estaLogeado = ref(false);
+    const estaLogeado = ref(true);
     const token = ref("");
     const usuario = ref("");
     const codigo = ref(0);
     const acceso = ref(false);
 
     // getters
-    // const getURLApi = computed(() => {
-    //   return API_URL;
-    // })
-    // const getUsuario = computed(() => {
-    //   return usuario;
-    // });
-    // const getCodigo = computed(() => {
-    //   return codigo;
-    // })
+    const getUsuario = computed(() => {
+      return usuario;
+    });
+    const getAcceso = computed(() => {
+      return acceso;
+    });
+    const getCodigo = computed(() => {
+      return codigo;
+    });
     const getHttpHeaders = computed(() => {
       return {
         "Content-Type": "application/json",
@@ -54,14 +55,18 @@ export const useLocalStore = defineStore(
       codigo,
       acceso,
       getHttpHeaders,
+      getUsuario,
+      getCodigo,
+      getAcceso,
       toggleDarkMode,
       iniciarSesion,
       actualizarUsuario,
     };
   },
   {
-    persist: {
-      storage: persistedState.localStorage,
-    },
+    // persist: {
+    //   storage: persistedState.localStorage,
+    // },
+    persist: true,
   }
 );
