@@ -10,12 +10,11 @@ const { dark } = useQuasar();
 const darkMode = ref(false);
 const leftDrawerOpen = ref(false);
 const localStore = useLocalStore();
-const { isDarkActive } = storeToRefs(localStore);
-const { toggleDarkMode } = localStore;
+const { toggleDarkMode, getDarkMode } = localStore;
 
 // Methods
-onMounted(() => {
-  darkMode.value = isDarkActive.value;
+onBeforeMount(async () => {
+  darkMode.value = (await getDarkMode).value;
 });
 
 watch(

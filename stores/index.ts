@@ -14,15 +14,10 @@ export const useLocalStore = defineStore(
     const acceso = ref(false);
 
     // getters
-    const getUsuario = computed(() => {
-      return usuario;
-    });
-    const getAcceso = computed(() => {
-      return acceso;
-    });
-    const getCodigo = computed(() => {
-      return codigo;
-    });
+    const getDarkMode = computed(async () => isDarkActive);
+    const getUsuario = computed(() => usuario);
+    const getAcceso = computed(() => acceso);
+    const getCodigo = computed(() => codigo);
     const getHttpHeaders = computed(() => {
       return {
         "Content-Type": "application/json",
@@ -58,6 +53,7 @@ export const useLocalStore = defineStore(
       getUsuario,
       getCodigo,
       getAcceso,
+      getDarkMode,
       toggleDarkMode,
       iniciarSesion,
       actualizarUsuario,
